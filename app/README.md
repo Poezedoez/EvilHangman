@@ -12,6 +12,7 @@ settings make it so that you can adjust the game to your level.
 	*   Correctly chosen characters will be hidden from the keyboard
    	*   The current state of the to-be-guessed word is clearly displayed
 
-![alt text](https://github.com/Poezedoez/EvilHangman/app/sketches/ "sketch")
+![alt text](https://github.com/Poezedoez/EvilHangman/app/sketches/game_and_settings.jpg "sketch game and settings")
+![alt text](https://github.com/Poezedoez/EvilHangman/app/sketches/highscores.jpg "sketch highscores")
   
   
