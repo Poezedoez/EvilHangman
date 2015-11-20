@@ -11,7 +11,5 @@ settings make it so that you can adjust the game to your level.
 	*   The user will get an in-game keyboard, simplifying the input
 	*   Correctly chosen characters will be hidden from the keyboard
    	*   The current state of the to-be-guessed word is clearly displayed
-
-![alt text](https://github.com/Poezedoez/EvilHangman/app/sketches/ "sketch")
   
   
