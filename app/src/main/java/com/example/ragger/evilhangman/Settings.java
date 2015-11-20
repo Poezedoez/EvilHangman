@@ -4,20 +4,20 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+// public field parameters or getters?
 public class Settings extends AppCompatActivity {
 
     SharedPreferences database;
     SharedPreferences.Editor databaseEditor;
-    int mode;
+    boolean evilMode;
     int wordLength;
     int initialGuesses;
 
 
-    public Settings(){
-        this.database = getSharedPreferences("userSettings", Context.MODE_PRIVATE);
+    public Settings(Context context){
+        this.database = context.getSharedPreferences("settings", Context.MODE_PRIVATE);
         this.databaseEditor = database.edit();
-        this.mode = database.getInt("mode", 1);
+        this.evilMode = database.getBoolean("mode", false);
         this.wordLength = database.getInt("wordLength", 5);
         this.initialGuesses =  database.getInt("initialGuesses", 10);
 
@@ -29,8 +29,8 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
     }
 
-    public int getMode(){
-        return mode;
+    public boolean getMode(){
+        return evilMode;
     }
 
     public int getWordLength(){
