@@ -7,11 +7,13 @@ The WordLoader has a method to return a random word with this length, or give a 
 The Settings activity loads the user preferences on creation and is able to communicate these values to other classes by instantiation of it.
 The Highscores activity makes use of the Android HistoryViewActivity. Past highscores are show here in descending order.
 #### Return types
-	* 	int getGuesses
-	* 	char[] getDisplayedCharacters
-	* 	List<Character> getGuesses
-	* 	List<String> getWordsWithLength
-	* 	String getRandomWord
+	*	Gameplay game = loadGame based on mode (ActivityHangman) 
+	* 	int getGuesses (Gameplay)
+	* 	char[] getDisplayedCharacters (Gameplay)
+	* 	List<Character> getGuesses (Gameplay)
+	* 	List<String> getWordsWithLength(int length) (WordLoader) used by EvilGameplay
+	* 	String getRandomWord(int length) (WordLoader) used by GoodGameplay
+	* 	void makeSmallerSubset(this.subset) (EvilGameplay)
 
 ### API's and frameworks
 	* 	To store the user preferences (even after app closing), SharedPreferences is used.
