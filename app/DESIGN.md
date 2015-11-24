@@ -6,6 +6,9 @@ These classes play their own game mode, but both extend the abstract class Absra
 The words used in the game are loaded in the WordLoader class. 
 The WordLoader has a method to return a random word with this length, or give a set of words (evil mode).
 The Settings activity loads the user preferences on creation. The Settingsactivity gets the current settings passed as bundle from ActivityHangman. Given this settings object the activity can now modify these settings calling the setter methods on this object based on the user input.
+
+![sketch structure](http://i.imgur.com/m0oVwch.jpg "sketch structure")
+
 #### Return types
 	*	Gameplay game = loadGame based on mode (ActivityHangman) 
 	* 	int getGuesses (Gameplay)
@@ -19,7 +22,6 @@ The Settings activity loads the user preferences on creation. The Settingsactivi
 	* 	To store the user preferences (even after app closing), SharedPreferences is used.
 
 ### Sketches
-![sketch structure](http://i.imgur.com/m0oVwch.jpg "sketch structure")
 ![sketch game and settings](https://github.com/Poezedoez/EvilHangman/blob/master/app/sketches/game_and_settings.jpg "sketch game and settings")
 ![sketch highscores](https://github.com/Poezedoez/EvilHangman/blob/master/app/sketches/highscores.jpg "sketch highscores")
 
