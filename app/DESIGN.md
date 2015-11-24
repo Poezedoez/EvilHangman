@@ -15,5 +15,5 @@ The Highscores activity makes use of the Android HistoryViewActivity. Past highs
 ### Sketches
 ![sketch game and settings](https://github.com/Poezedoez/EvilHangman/blob/master/app/sketches/game_and_settings.jpg "sketch game and settings")
 ![sketch highscores](https://github.com/Poezedoez/EvilHangman/blob/master/app/sketches/highscores.jpg "sketch highscores")
-![sketch structure](https://www.dropbox.com/s/r7uwn9fub95wcu3/structure.jpg?dl=0 "sketch structure")
+![sketch structure](https://www.dropbox.com/s/r7uwn9fub95wcu3/structure.jpg?raw=1 "sketch structure")
 
