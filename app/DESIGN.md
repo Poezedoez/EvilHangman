@@ -1,11 +1,11 @@
 ### Structure
 ActivityHangman draws everything from the game on the screen. 
-The information required for this is obtained from the current gameplay class that is either ClassicHangman or EvilHangman. 
+Everything is set in motion gamewise when the user presses the 'guess' button. Upon this press the guesses character is passed to the game and in ActivityHangman is also checked for game win. If this is the case, the HighscoreActivity is started passing as Bundle parameter the score from the last game.
+The information required for showing the current game state in ActivityHangman is obtained from the current gameplay class that is either ClassicHangman or EvilHangman under the -Gameplay game- variable. 
 These classes play their own game mode, but both extend the abstract class AbsractGameplay that itself implements the interface Gameplay. The AbstractGameplay class has the core gameplay methods that both modes share.
 The words used in the game are loaded in the WordLoader class. 
 The WordLoader has a method to return a random word with this length, or give a set of words (evil mode).
-The Settings activity loads the user preferences on creation and is able to communicate these values to other classes by instantiation of it.
-The Highscores activity makes use of the Android HistoryViewActivity. Past highscores are show here in descending order.
+The Settings activity loads the user preferences on creation. The Settingsactivity gets the current settings passed as bundle from ActivityHangman. Given this settings object the activity can now modify these settings calling the setter methods on this object based on the user input.
 #### Return types
 	*	Gameplay game = loadGame based on mode (ActivityHangman) 
 	* 	int getGuesses (Gameplay)
