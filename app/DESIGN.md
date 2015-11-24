@@ -19,7 +19,7 @@ The Settings activity loads the user preferences on creation. The Settingsactivi
 	* 	To store the user preferences (even after app closing), SharedPreferences is used.
 
 ### Sketches
-![sketch structure](http://i.imgur.com/ZLhxKMv.jpg?1 "sketch structure")
+![sketch structure](http://i.imgur.com/m0oVwch.jpg "sketch structure")
 ![sketch game and settings](https://github.com/Poezedoez/EvilHangman/blob/master/app/sketches/game_and_settings.jpg "sketch game and settings")
 ![sketch highscores](https://github.com/Poezedoez/EvilHangman/blob/master/app/sketches/highscores.jpg "sketch highscores")
 
