@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="initial_guesses">10</integer>
+    <integer name="word_length">4</integer>
+    <bool name="game_mode">true</bool>
+</resources>

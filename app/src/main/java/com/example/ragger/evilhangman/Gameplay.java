@@ -1,11 +1,14 @@
 package com.example.ragger.evilhangman;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Ragger on 12-11-2015.
  */
-public interface Gameplay {
+public interface Gameplay extends Serializable {
 
      /* Returns the current to be guesses word as a String */
     String getWord();
@@ -30,4 +33,13 @@ public interface Gameplay {
 
     /* Return true if the game is lost */
     boolean gameLost();
+
+    /* Return true if the game accepts the input */
+    boolean validInput(CharSequence s);
+
+    /* Calculate the highscore achieved in the current game */
+    int calculateHighscore();
+
+    // TO DELETE
+    List<String> getSubset();
 }

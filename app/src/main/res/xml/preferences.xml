@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="@string/game_settings"
+        android:title="@string/game_settings">
+
+        <SwitchPreference
+            android:defaultValue="@bool/game_mode"
+            android:key="@string/preference_mode"
+            android:summary="@string/settings_mode_summary"
+            android:title="@string/settings_mode_title"
+            android:switchTextOn="Evil"
+            android:switchTextOff="Classic"/>
+
+        <EditTextPreference
+            android:defaultValue="@integer/initial_guesses"
+            android:inputType="number"
+            android:key="@string/preference_initial_guesses"
+            android:summary="@string/settings_guesses_summary"
+            android:title="@string/settings_guesses_title" />
+
+        <EditTextPreference
+            android:defaultValue="@integer/word_length"
+            android:inputType="number"
+            android:key="@string/preference_word_length"
+            android:summary="@string/settings_word_length_summary"
+            android:title="@string/settings_word_length_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
