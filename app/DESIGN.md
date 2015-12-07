@@ -12,5 +12,5 @@ The Highscores activity makes use of the Android HistoryViewActivity. Past highs
 ### API's and frameworks
 	* 	To store the user preferences (even after app closing), SharedPreferences is used.
 
-![alt text](https://github.com/Poezedoez/EvilHangman/tree/master/app/sketches/game_and_settings.jpg "sketch game and settingsManager")
+![alt text](https://github.com/Poezedoez/EvilHangman/tree/master/app/sketches/game_and_settings.jpg "sketch game and settings")
 ![alt text](https://github.com/Poezedoez/EvilHangman/tree/master/app/sketches/highscores.jpg "sketch highscores")
