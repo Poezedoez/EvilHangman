@@ -5,8 +5,8 @@ intends to go for a highscore, this effort, will be rewarded. The customizable
 settingsManager make it so that you can adjust the game to your level.
 
 ### Features
-	*   User settingsManager are saved, and remembered, even after killing the app
-	* 	Highscore is determined based on difficulty settingsManager, encouraging to
+	*   User settings are saved, and remembered, even after killing the app
+	*   Highscore is determined based on difficulty settings, encouraging to
 		challenge yourself with longer words, fewer tries and choice of game mode
 	*   The user will get an in-game keyboard, simplifying the input
 	*   Correctly chosen characters will be hidden from the keyboard
