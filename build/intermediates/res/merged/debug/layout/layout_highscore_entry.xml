@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/highscoreEntry"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="10">
+
+    <TextView
+        android:id="@+id/tvEntryNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Rank"
+        android:layout_weight="8"/>
+
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Points"
+        android:layout_weight="2"/>
+
+</LinearLayout><!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/src/main/res/layout/layout_highscore_entry.xml -->
