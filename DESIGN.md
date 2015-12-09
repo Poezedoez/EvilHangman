@@ -9,7 +9,7 @@ The SettingsActivity contains the tools to edit the user preferences, the settin
 The HighscoresActivity shows the 10 highest achieved highscores of all time. Highscores are shown here in descending order. 
 
 An overview in the structure can be seen below:
-![structure](link)
+![structure](EvilHangman/sketches/IMG_20151124_155307.jpg)
 
 ### API's and frameworks
 	* 	In android there is no existing SeekBarPreference. A custom SeekbarPreference is used for this:
