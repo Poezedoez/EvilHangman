@@ -32,6 +32,7 @@ public class HighscoresActivity extends AppCompatActivity {
     CustomAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
+
         // Prepare layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscores);

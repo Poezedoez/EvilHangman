@@ -2,8 +2,12 @@ package com.example.ragger.evilhangman;
 
 import android.inputmethodservice.KeyboardView;
 
+import com.example.ragger.evilhangman.exception.IllegalGuessException;
+
 /**
- * Created by Ragger on 3-12-2015.
+ * Keyboard listener defined in seperate class for the sake of readability
+ *
+ * @author Ragger
  */
 public class KeyboardListener implements KeyboardView.OnKeyboardActionListener {
 
@@ -23,7 +27,11 @@ public class KeyboardListener implements KeyboardView.OnKeyboardActionListener {
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
-        host.nextMove((char) primaryCode);
+        try {
+            host.guess((char) primaryCode);
+        } catch (IllegalGuessException e) {
+            // Do nothing; keyboard warrants character range;
+        }
     }
 
     @Override

@@ -1,34 +1,44 @@
 package com.example.ragger.evilhangman;
 
 
+import com.example.ragger.evilhangman.exception.IllegalGuessException;
+import com.example.ragger.evilhangman.exception.NoWordsWithGivenLengthException;
+
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-/* This class is instantiated when the user decides to play the game on evil mode (default)
- * Evil gameplay uses a different way of choosing a word than standard Hangman. It still uses
- * a lot of methods from superclass AbstractGameplay that are independent of game mode
+/**
+ * This class is instantiated when the user decides to play the game on evil mode (default)
+ * Evil gameplay uses a different way of choosing a word than standard Hangman.
+ *
+ * @author Ragger
  */
 
-// When to write this.(field) and when to omit?
+// Todo When to write this.(field) and when to omit?
 public class EvilGameplay extends AbstractGameplay {
 
-    List<String> subset;
+    private List<String> subset;
 
-    public EvilGameplay(SettingsManager settingsManager, WordManager wordManager) {
+    public EvilGameplay(SettingsManager settingsManager, WordManager wordManager) throws NoWordsWithGivenLengthException {
         super(settingsManager);
-        this.subset = wordManager.getAllWordsWithLength(super.wordLength);
+        this.subset = wordManager.getAllWordsWithLength(wordLength);
     }
 
     @Override
-    protected boolean correctGuess(char c) {
-        // Set word as least revealing from set with most alternatives for the given character
-        this.subset = getNewSubset(c);
-        super.word = this.subset.get(0);
+    public void guess(char input) throws IllegalGuessException {
+        if(isFinalWord()) {
+            super.guess(input);
+            return;
+        }
 
-        // We have a chosen word, so we have to do the regular check
-        return super.correctGuess(c);
+        subset = getNewSubset(input);
+        word = this.subset.get(0);
+    }
+
+    @Override
+    public int getScore() {
+        return super.getScore() * 2;
     }
 
     /* Returns a new subset while trying to avoid words with the user input */
@@ -37,7 +47,7 @@ public class EvilGameplay extends AbstractGameplay {
         // Get all possible permutations with the guessed character
         CharacterPermutator cp = new CharacterPermutator();
         char[] set = {c, '*'};
-        cp.makePermutationSet(set, super.wordLength);
+        cp.makePermutationSet(set, wordLength);
         List<String> permutations = cp.getPermutations();
 
         // Divide the current subset into equality lists
@@ -47,10 +57,10 @@ public class EvilGameplay extends AbstractGameplay {
         for(String permutation : permutations){
             List<String> list = new ArrayList<>();
             int characterOccurrences = countOccurrences(permutation, c);
-            for(String word : this.subset){
+            for(String word : subset){
                 int permutationEquality = 0;
                 int totalCount = 0;
-                for(int i = 0; i < super.wordLength; i++){
+                for(int i = 0; i < wordLength; i++){
                     if(word.charAt(i) == permutation.charAt(i)){
                         permutationEquality++;
                     }
@@ -81,6 +91,9 @@ public class EvilGameplay extends AbstractGameplay {
         return occurrences;
     }
 
+    private boolean isFinalWord() {
+        return subset.size() == 1;
+    }
 
     /* Return the largest list of strings and break ties randomly */
     private List<String> getLargestStringList(List<List<String>> listOfLists) {
@@ -107,9 +120,4 @@ public class EvilGameplay extends AbstractGameplay {
         return maxLists.get(luckyList);
     }
 
-    // TO DELETE
-    @Override
-    public List<String> getSubset() {
-        return this.subset;
-    }
 }

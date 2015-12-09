@@ -6,16 +6,12 @@ import android.content.Intent;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.view.ViewParent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,27 +21,28 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ragger.evilhangman.exception.IllegalGuessException;
+import com.example.ragger.evilhangman.exception.NoWordsWithGivenLengthException;
+
 import java.util.List;
 
 
 /**
- * Created by Ragger on 17-11-2015.
- * This is the main activity of the Hangman game. That shows all the game information
- * the user needs to play the game. From this activity can be navigated to the Settings
- * activity to change preferences. Upon game end, the user will be taken to the Highscore activity
+ * This is the launch activity of the Hangman game that shows all the game information
+ * the user needs to play the game. From this activity can be navigated to the SettingsActivity
+ * to change preferences. When the game is won, the user will be taken to the HighscoresActivity
+ *
+ * @author Ragger
  */
+
 public class HangmanActivity extends AppCompatActivity {
 
     private SettingsManager settingsManager;
     private Gameplay game;
-    private char[] displayedCharacters;
-    private TextView tvGuesses, tvGuessedCharacters, tvWord, tvActualWord;
-    private EditText etInput;
+    private TextView tvGuesses, tvGuessedCharacters, tvDisplayedWord;
+    private LinearLayout canvas;
     private ImageView ivHangman;
-    private Button bGuess;
     private Toolbar toolbar;
-    private RelativeLayout gameLayout;
-    private LinearLayout stringBox;
     private static int[] images = {R.drawable.hangman0, R.drawable.hangman1, R.drawable.hangman2, R.drawable.hangman3,
             R.drawable.hangman4, R.drawable.hangman5, R.drawable.hangman6};
 
@@ -55,27 +52,36 @@ public class HangmanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hangman);
         findViews();
         setSupportActionBar(toolbar);
+        addKeyboard();
         startNewGame();
-
     }
 
     private void findViews() {
         this.tvGuesses = (TextView) findViewById(R.id.tvGuesses);
         this.tvGuessedCharacters = (TextView) findViewById(R.id.tvGuessedCharacters);
-        this.tvWord = (TextView) findViewById(R.id.tvWord);
-        this.tvActualWord = (TextView) findViewById(R.id.tvActualWord);
-        this.etInput = (EditText) findViewById(R.id.etInput);
+        this.tvDisplayedWord = (TextView) findViewById(R.id.tvDisplayedWord);
         this.ivHangman = (ImageView) findViewById(R.id.ivHangman);
-        this.bGuess = (Button) findViewById(R.id.bGuess);
-        this.gameLayout = (RelativeLayout) findViewById(R.id.game_layout);
         this.toolbar = (Toolbar) findViewById(R.id.custom_toolbar);
-        this.stringBox = (LinearLayout) findViewById(R.id.llStringBox);
+        this.canvas = (LinearLayout) findViewById(R.id.canvas);
+    }
+
+    private void addKeyboard() {
+
+        // Create and attach the Keyboard to the view
+        Keyboard keyboard = new Keyboard(this, R.xml.keyboard);
+        KeyboardView kv = (KeyboardView) findViewById(R.id.keyboardview);
+        kv.setKeyboard(keyboard);
+
+        // Install the keyboard listener
+        KeyboardListener keyboardListener = new KeyboardListener(this);
+        kv.setOnKeyboardActionListener(keyboardListener);
+        kv.setPreviewEnabled(false);
     }
 
     private void startNewGame() {
         loadSettings(this);
         loadGame();
-        initializeViews();
+        updateViews();
     }
 
     private void loadSettings(Context context) {
@@ -84,65 +90,26 @@ public class HangmanActivity extends AppCompatActivity {
 
     private void loadGame() {
         boolean evilModeEnabled = settingsManager.getMode();
-        if (evilModeEnabled) {
-            this.game = new EvilGameplay(settingsManager, new WordManager(this));
-        } else {
-            this.game = new GoodGameplay(settingsManager, new WordManager(this));
-        }
-    }
-
-    private void initializeViews() {
-        this.displayedCharacters = game.getDisplayedCharacters();
-        tvGuesses.setText(String.valueOf(settingsManager.getInitialGuesses()));
-        bGuess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence input = etInput.getText();
-                if (game.validInput(input)) {
-                    game.makeGuess(Character.toLowerCase(input.charAt(0)));
-                    updateViews();
-                    checkGameState();
-                } else {
-                    showMessage(getString(R.string.game_message_input), Toast.LENGTH_SHORT);
-                }
+        try {
+            if (evilModeEnabled) {
+                this.game = new EvilGameplay(settingsManager, new WordManager(this));
+            } else {
+                this.game = new GoodGameplay(settingsManager, new WordManager(this));
             }
-        });
-        tvWord.setText(String.valueOf(displayedCharacters));
-//        addCells();
-        addKeyboard();
-    }
-
-    private void addCells() {
-        // Add cells to layout based on chosen word length
-        for (int i = 0; i < settingsManager.getWordLength(); i++) {
-            TextView cell = (TextView) getLayoutInflater().inflate(R.layout.layout_cell, null);
-            stringBox.addView(cell);
+        } catch (NoWordsWithGivenLengthException e) {
+            showMessage("No words known with word length " + settingsManager.getWordLength(), Toast.LENGTH_LONG);
         }
-    }
-
-    private void addKeyboard() {
-
-        // Create the Keyboard
-        Keyboard keyboard = new Keyboard(this, R.xml.keyboard);
-
-        // Lookup the KeyboardView
-        KeyboardView kv = (KeyboardView) findViewById(R.id.keyboardview);
-
-        // Attach the keyboard to the view
-        kv.setKeyboard(keyboard);
-
-        // Install the key handler
-        KeyboardListener keyboardListener = new KeyboardListener(this);
-        kv.setOnKeyboardActionListener(keyboardListener);
-        kv.setPreviewEnabled(false);
     }
 
     private void updateViews() {
-        etInput.setText("");
-        String newGuesses = String.valueOf(game.getGuesses());
+
+        // Update user guesses left
+        String newGuesses = String.valueOf(game.getGuessesLeft());
         tvGuesses.setText(newGuesses);
+
+        // Update currently displayed word
         String displayedWord = new String(game.getDisplayedCharacters());
-        tvWord.setText(displayedWord);
+        tvDisplayedWord.setText(displayedWord);
 
         // Update guessed characters
         StringBuilder sb = new StringBuilder();
@@ -156,24 +123,11 @@ public class HangmanActivity extends AppCompatActivity {
 
         // Update hangman image
         switchImage();
-
-        // Update displayed letters
-//        updateStringBox();
-
-        // TO DELETE
-        List<String> subset = game.getSubset();
-        StringBuilder sb2 = new StringBuilder();
-        for (String s : subset) {
-            sb2.append(s);
-            sb2.append(" ");
-        }
-        String subsetWords = sb2.toString();
-        tvActualWord.setText(subsetWords);
     }
 
-    /* Switch gallow image based on number of guesses left */
+    /* Switch hangman image based on number of guesses left */
     private void switchImage() {
-        int guesses = game.getGuesses();
+        int guesses = game.getGuessesLeft();
         int image = images[6];
         switch (guesses) {
             case (5):
@@ -197,38 +151,30 @@ public class HangmanActivity extends AppCompatActivity {
         ivHangman.setImageResource(image);
     }
 
-    private void updateStringBox() {
-        for (int i = 0; i < stringBox.getChildCount(); i++) {
-            TextView cell = (TextView) stringBox.getChildAt(i);
-            cell.setText(String.valueOf(displayedCharacters[i]));
-        }
-    }
-
+    /* Check if the game has finished and handle accordingly */
     private void checkGameState() {
-        // Check if the game has ended
-        if (game.gameWon()) {
-            showMessage(getString(R.string.game_message_won), Toast.LENGTH_LONG);
 
-            // Hide keyboard
-            View view = this.getCurrentFocus();
-            if (view != null) {
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
+        if (game.isWon()) {
+
+            // Congratulate user
+            showMessage(getString(R.string.game_message_won), Toast.LENGTH_LONG);
 
             // Go to highscores
             Intent highscores = new Intent(HangmanActivity.this, HighscoresActivity.class);
-            int score = game.calculateHighscore();
+            int score = game.getScore();
             highscores.putExtra("score", score);
             finish();
             startActivity(highscores);
         }
 
-        if (game.gameLost()) {
-            gameLayout.setVisibility(View.INVISIBLE);
+        else if (game.isLost()) {
+
+            // Hide canvas
+            canvas.setVisibility(View.INVISIBLE);
+
+            // Inform user
             showMessage(getString(R.string.game_message_lost), Toast.LENGTH_LONG);
         }
-
 
     }
 
@@ -242,6 +188,8 @@ public class HangmanActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.miSettings) {
+
+            // Start SettingsActivity passing setting limits
             WordManager wordManager = new WordManager(this);
             Intent settingsActivity = new Intent(HangmanActivity.this, SettingsActivity.class);
             settingsActivity.putExtra("maxWordLength", wordManager.getLongestWordLength());
@@ -256,15 +204,14 @@ public class HangmanActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("game", this.game);
+        outState.putSerializable("game", game);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        this.game = (Gameplay) savedInstanceState.getSerializable("game");
+        game = (Gameplay) savedInstanceState.getSerializable("game");
         updateViews();
-
     }
 
     /* Show a toast */
@@ -275,8 +222,8 @@ public class HangmanActivity extends AppCompatActivity {
     }
 
     /* Let the game react to a guess of the user */
-    public void nextMove(char c) {
-        game.makeGuess(c);
+    public void guess(char c) throws IllegalGuessException {
+        game.guess(c);
         updateViews();
         checkGameState();
     }

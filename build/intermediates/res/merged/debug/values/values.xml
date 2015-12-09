@@ -5664,7 +5664,7 @@
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="box_cell_width">40dp</dimen>
+    <dimen name="border_width">3dp</dimen>
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="design_appbar_elevation">4dp</dimen>
@@ -5710,6 +5710,9 @@
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="keyboard_height">200dp</dimen>
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="notification_large_icon_height">64dp</dimen>
@@ -5718,7 +5721,6 @@
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="setting_seekbar_width">120dp</dimen>
-    <dimen name="string_box_height">60dp</dimen>
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>

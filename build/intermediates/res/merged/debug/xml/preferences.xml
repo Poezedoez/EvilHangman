@@ -13,19 +13,17 @@
             android:switchTextOn="Evil"
             android:switchTextOff="Classic"/>
 
-        <EditTextPreference
+        <com.example.ragger.evilhangman.SeekBarPreference
             android:defaultValue="@integer/initial_guesses"
-            android:inputType="number"
             android:key="@string/preference_initial_guesses"
             android:summary="@string/settings_guesses_summary"
-            android:title="@string/settings_guesses_title" />
+            android:title="@string/settings_guesses_title"/>
 
-        <EditTextPreference
+        <com.example.ragger.evilhangman.SeekBarPreference
             android:defaultValue="@integer/word_length"
-            android:inputType="number"
             android:key="@string/preference_word_length"
             android:summary="@string/settings_word_length_summary"
-            android:title="@string/settings_word_length_title" />
+            android:title="@string/settings_word_length_title"/>
 
     </PreferenceCategory>
 

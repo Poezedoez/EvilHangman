@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Permutation class that consists of modified code
- * from Abhinav Ramana http://www.geeksforgeeks.org/print-all-combinations-of-given-length/
- * calling makePermutationSet({'e', '*'}, 3) returns {eee, e**, ee*, ***, etc.}
- * Created by Ragger on 1-12-2015.
+ * Calling makePermutationSet({'e', '*'}, 3) returns {eee, e**, ee*, ***, etc.}
+ *
+ * @author Ragger
  */
 
 public class CharacterPermutator {
 
-    List<String> permutations;
+    private List<String> permutations;
 
-    /* Wrapper method that makes a permutation set by calling the private method */
+    /* Wrapper */
     public void makePermutationSet(char[] set, int k) {
         int n = set.length;
         this.permutations =  new ArrayList<>();

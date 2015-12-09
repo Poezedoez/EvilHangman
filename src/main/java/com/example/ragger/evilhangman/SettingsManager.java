@@ -15,7 +15,7 @@ import java.io.Serializable;
 
 public class SettingsManager implements Serializable {
 
-    private boolean evilMode;
+    private boolean isEvilMode;
     private int wordLength;
     private int initialGuesses;
 
@@ -33,13 +33,13 @@ public class SettingsManager implements Serializable {
 
     /* Load stored preferences that already contain default values other than the ones given here */
     private void loadStoredPreferences(SharedPreferences database, Context context) {
-        this.evilMode = database.getBoolean(context.getString(R.string.preference_mode), false);
-        this.wordLength = Integer.parseInt(database.getString(context.getString(R.string.preference_word_length), "0"));
-        this.initialGuesses = Integer.parseInt(database.getString(context.getString(R.string.preference_initial_guesses), "0"));
+        this.isEvilMode = database.getBoolean(context.getString(R.string.preference_mode), false);
+        this.wordLength = database.getInt(context.getString(R.string.preference_word_length), 5);
+        this.initialGuesses = database.getInt(context.getString(R.string.preference_initial_guesses), 10);
     }
 
     public boolean getMode() {
-        return evilMode;
+        return isEvilMode;
     }
 
     public int getWordLength() {

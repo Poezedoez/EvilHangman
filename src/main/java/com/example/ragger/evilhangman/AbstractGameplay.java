@@ -1,31 +1,29 @@
 package com.example.ragger.evilhangman;
 
-import android.os.Parcelable;
+import com.example.ragger.evilhangman.exception.IllegalGuessException;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Ragger on 17-11-2015.
  * This class shares methods of Evil- and GoodGameplay, meaning that methods in this class
  * can be used by the two classes just the same. There are no specific methods in this class that
  * are only useful to one particular game mode.
+ *
+ * @author Ragger
  */
 public abstract class AbstractGameplay implements Gameplay {
 
     protected String word;
     protected char[] displayedCharacters;
     protected List<Character> guessedCharacters;
-    protected SettingsManager settingsManager;
-    protected int guesses;
-    protected int incorrectGuesses;
+    protected int guessesLeft;
     protected int wordLength;
 
+
     public AbstractGameplay(SettingsManager settingsManager) {
-        this.settingsManager = settingsManager;
         this.wordLength = settingsManager.getWordLength();
-        this.guesses = settingsManager.getInitialGuesses();
+        this.guessesLeft = settingsManager.getInitialGuesses();
         this.guessedCharacters = new ArrayList<>();
         fillCharArray();
 
@@ -41,49 +39,37 @@ public abstract class AbstractGameplay implements Gameplay {
     }
 
     @Override
-    public String getWord() {
-        return word;
-    }
-
-    @Override
     public List<Character> getGuessedCharacters() {
         return guessedCharacters;
     }
 
     @Override
-    public char[] getDisplayedCharacters(){
+    public char[] getDisplayedCharacters() {
         return displayedCharacters;
     }
 
     @Override
-    public void decrementGuesses() {
-        guesses--;
+    public int getGuessesLeft() {
+        return guessesLeft;
     }
 
     @Override
-    public int getGuesses() {
-        return guesses;
-    }
-
-    /* Handles a game move that consists of the user giving an input character */
-    @Override
-    public void makeGuess(char c){
-        if(!guessedCharacters.contains(c)){
-            guessedCharacters.add(c);
+    public void guess(char input) throws IllegalGuessException {
+        validate(input);
+        if (!guessedCharacters.contains(input)) {
+            guessedCharacters.add(input);
         }
-        if(correctGuess(c)){
-            updateDisplayedCharacters(c);
-        }
-        else {
-            incorrectGuesses++;
-            decrementGuesses();
+        if (wordContains(input)) {
+            updateDisplayedCharacters(input);
+        } else {
+            guessesLeft--;
         }
     }
 
     /* Returns true if the word is guessed, which means a win */
     @Override
-    public boolean gameWon() {
-        if(new String(displayedCharacters).equals(word)){
+    public boolean isWon() {
+        if (new String(displayedCharacters).equals(word)) {
             return true;
         } else {
             return false;
@@ -92,8 +78,8 @@ public abstract class AbstractGameplay implements Gameplay {
 
     /* Returns true if the user is out of guesses, which means a loss */
     @Override
-    public boolean gameLost() {
-        if(guesses <= 0){
+    public boolean isLost() {
+        if (guessesLeft <= 0) {
             return true;
         } else {
             return false;
@@ -101,42 +87,33 @@ public abstract class AbstractGameplay implements Gameplay {
 
     }
 
+    /* Returns the highscore based guesses needed, the word length and the game mode */
+    public int getScore() {
+        return (27 - guessedCharacters.size()) * wordLength;
+    }
+
+    protected void validate(char input) throws IllegalGuessException {
+        if (!Character.isLetter(input)) {
+            throw new IllegalGuessException(input);
+        }
+    }
+
     /* Returns true if the current word contains the guessed character */
-    protected boolean correctGuess(char c){
-        for(int i = 0; i < word.length(); i++) {
-            if(word.charAt(i) == c){
+    private boolean wordContains(char c) {
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == c) {
                 return true;
             }
         }
         return false;
     }
 
-    /* Returns true if the user input is a (latin) letter */
-    @Override
-    public boolean validInput(CharSequence s){
-        if(s.toString().equals("")){
-            return false;
-        }
-        char c = s.charAt(0);
-        if(Character.isLetter(c)){
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
     /* Updates the array with character of the word revealed to the user */
     private void updateDisplayedCharacters(char c) {
-        for(int i = 0; i < displayedCharacters.length; i++) {
-            if(word.charAt(i) == c){
-                displayedCharacters[i]=c;
+        for (int i = 0; i < displayedCharacters.length; i++) {
+            if (word.charAt(i) == c) {
+                displayedCharacters[i] = c;
             }
         }
-    }
-
-    /* Returns the highscore based guesses needed and the word length */
-    public int calculateHighscore(){
-        return (27-incorrectGuesses)*(wordLength*2);
     }
 }
