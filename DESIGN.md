@@ -16,3 +16,5 @@ In android there is no existing SeekBarPreference. A custom SeekbarPreference is
 [source](http://bit.ly/1lP8Orp)
 
 ### Sketches
+![alt text](https://raw.githubusercontent.com/Poezedoez/EvilHangman/master/sketches/game_and_settings.jpg "Structure")
+![alt text](https://raw.githubusercontent.com/Poezedoez/EvilHangman/master/sketches/highscores.jpg "Structure")
