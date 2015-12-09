@@ -8,7 +8,12 @@ multiple words with a given word length.
 The SettingsActivity contains the tools to edit the user preferences, the settings of the game.
 The HighscoresActivity shows the 10 highest achieved highscores of all time. Highscores are shown here in descending order. 
 
+An overview in the structure can be seen below:
+![structure](link)
+
 ### API's and frameworks
 	* 	In android there is no existing SeekBarPreference. A custom SeekbarPreference is used for this:
 		[source](http://bit.ly/1lP8Orp)
 	* 	To store the user preferences (even after app closing), SharedPreferences is used.
+
+### Sketches
