@@ -10,5 +10,5 @@ The HighscoresActivity shows the 10 highest achieved highscores of all time. Hig
 
 ### API's and frameworks
 	* 	In android there is no existing SeekBarPreference. A custom SeekbarPreference is used for this:
-		![source](http://bit.ly/1lP8Orp)
+		[source](http://bit.ly/1lP8Orp)
 	* 	To store the user preferences (even after app closing), SharedPreferences is used.
