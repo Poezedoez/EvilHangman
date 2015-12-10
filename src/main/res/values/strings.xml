@@ -2,8 +2,6 @@
 <resources>
 
     <string name="app_name">Evil Hangman</string>
-    <string name="simple_ime">Simple IME</string>
-    <string name="subtype_en_US">English (US)</string>
 
     <string-array name="test_words">
         <item>bear</item>
@@ -5476,11 +5474,10 @@
     <string name="popup_settings">Settings</string>
     <string name="popup_clear_highscores">Clear highscores</string>
 
-
-
     <string name="preference_mode">mode</string>
     <string name="preference_word_length">wordLength</string>
     <string name="preference_initial_guesses">initialGuesses</string>
+    <string name="popup_new_game">New game</string>
 
 
 </resources>

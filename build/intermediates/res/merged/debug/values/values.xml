@@ -5664,7 +5664,7 @@
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="border_width">3dp</dimen>
+    <dimen name="border_width">5dp</dimen>
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="design_appbar_elevation">4dp</dimen>
@@ -5701,6 +5701,7 @@
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
+    <dimen name="displayed_word_size">25sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
@@ -5718,11 +5719,6 @@
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
-    <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/src/main/res/values/dimens.xml -->
-    <eat-comment/>
-    <dimen name="setting_seekbar_width">120dp</dimen>
-    <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
-    <eat-comment/>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -5794,6 +5790,7 @@
     <string name="game_message_won">Well done!!! :^)</string>
     <string name="game_settings">Game settings</string>
     <string name="popup_clear_highscores">Clear highscores</string>
+    <string name="popup_new_game">New game</string>
     <string name="popup_settings">Settings</string>
     <string name="preference_initial_guesses">initialGuesses</string>
     <string name="preference_mode">mode</string>
@@ -5804,15 +5801,9 @@
     <string name="settings_mode_title">Game mode</string>
     <string name="settings_word_length_summary">The amount of letters in a word</string>
     <string name="settings_word_length_title">Word length</string>
-    <string name="simple_ime">Simple IME</string>
     <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/src/main/res/values/strings.xml -->
-    <eat-comment/>
-    <string name="subtype_en_US">English (US)</string>
-    <!-- From: file:/C:/Users/Ragger/Dropbox/Studie/AppStudio/projects/EvilHangman/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
-    <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

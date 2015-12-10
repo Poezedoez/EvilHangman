@@ -9,4 +9,9 @@
         android:title="@string/popup_settings"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/miNewGame"
+        android:orderInCategory="200"
+        android:title="@string/popup_new_game" />
+
 </menu>

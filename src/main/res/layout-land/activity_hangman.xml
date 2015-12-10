@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/layout_toolbar" />
+    <include layout="@layout/layout_toolbar" />
 
     <LinearLayout
         android:id="@+id/canvas"
@@ -22,62 +21,63 @@
 
             <ImageView
                 android:id="@+id/ivHangman"
-                android:src="@drawable/hangman6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
                 android:layout_alignBottom="@+id/tvGuessedCharacters"
+                android:layout_marginLeft="30dp"
+                android:layout_toEndOf="@+id/tvGuessedCharacters"
                 android:layout_toRightOf="@+id/tvGuessedCharacters"
-                android:layout_toEndOf="@+id/tvGuessedCharacters" />
+                android:src="@drawable/hangman6" />
 
             <TextView
                 android:id="@+id/tvGuesses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-1"
                 android:layout_alignTop="@+id/ivHangman"
+                android:layout_toEndOf="@+id/ivHangman"
                 android:layout_toRightOf="@+id/ivHangman"
-                android:layout_toEndOf="@+id/ivHangman" />
+                android:text="-1" />
 
             <TextView
                 android:id="@+id/tvGuessedCharactersTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Guessed"
-                android:layout_below="@id/tvDisplayedWord"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/tvDisplayedWord"
+                android:text="Guessed" />
 
             <TextView
                 android:id="@+id/tvGuessedCharacters"
+                android:layout_width="110dp"
+                android:layout_height="75dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvGuessedCharactersTitle"
                 android:background="@drawable/cell"
+                android:paddingBottom="@dimen/border_width"
                 android:paddingLeft="@dimen/border_width"
                 android:paddingRight="@dimen/border_width"
-                android:paddingTop="@dimen/border_width"
-                android:paddingBottom="@dimen/border_width"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/tvGuessedCharactersTitle"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:paddingTop="@dimen/border_width" />
 
             <TextView
                 android:id="@+id/tvDisplayedWord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="*****"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="45dp" />
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:text="*****"
+                android:textAlignment="center"
+                android:textSize="@dimen/displayed_word_size" />
 
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@id/inputLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -93,7 +93,6 @@
                 android:shadowColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 

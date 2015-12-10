@@ -15,7 +15,6 @@ import java.util.Random;
  * @author Ragger
  */
 
-// Todo When to write this.(field) and when to omit?
 public class EvilGameplay extends AbstractGameplay {
 
     private List<String> subset;
@@ -27,13 +26,18 @@ public class EvilGameplay extends AbstractGameplay {
 
     @Override
     public void guess(char input) throws IllegalGuessException {
+
+        // If last word in set, no need to look for other subsets
         if(isFinalWord()) {
             super.guess(input);
             return;
         }
 
+        // Get new subset
         subset = getNewSubset(input);
-        word = this.subset.get(0);
+        word = subset.get(0);
+
+        super.guess(input);
     }
 
     @Override

@@ -81,6 +81,7 @@ public class HangmanActivity extends AppCompatActivity {
     private void startNewGame() {
         loadSettings(this);
         loadGame();
+        canvas.setVisibility(View.VISIBLE);
         updateViews();
     }
 
@@ -97,7 +98,9 @@ public class HangmanActivity extends AppCompatActivity {
                 this.game = new GoodGameplay(settingsManager, new WordManager(this));
             }
         } catch (NoWordsWithGivenLengthException e) {
-            showMessage("No words known with word length " + settingsManager.getWordLength(), Toast.LENGTH_LONG);
+            showMessage("No words known with word length " + settingsManager.getWordLength(), Toast.LENGTH_SHORT);
+            settingsManager.setDefaultPreferences(this);
+            showMessage("Settings have been set to their default value", Toast.LENGTH_SHORT);
         }
     }
 
@@ -197,6 +200,11 @@ public class HangmanActivity extends AppCompatActivity {
             startActivity(settingsActivity);
             return true;
         }
+
+        if (id == R.id.miNewGame) {
+            startNewGame();
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

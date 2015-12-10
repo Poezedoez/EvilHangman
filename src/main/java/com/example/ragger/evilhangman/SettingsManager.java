@@ -26,7 +26,7 @@ public class SettingsManager implements Serializable {
 
     /* Load the database that contains the user preferences */
     private SharedPreferences loadDatabase(Context context) {
-        PreferenceManager.setDefaultValues(context, R.xml.preferences, false);
+        setDefaultPreferences(context);
         SharedPreferences database = PreferenceManager.getDefaultSharedPreferences(context);
         return database;
     }
@@ -48,5 +48,9 @@ public class SettingsManager implements Serializable {
 
     public int getInitialGuesses() {
         return initialGuesses;
+    }
+
+    public void setDefaultPreferences(Context context){
+        PreferenceManager.setDefaultValues(context, R.xml.preferences, false);
     }
 }

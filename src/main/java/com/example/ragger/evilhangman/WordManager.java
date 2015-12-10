@@ -23,7 +23,7 @@ public class WordManager {
 
     public WordManager(Context context) {
         Resources res = context.getResources();
-        this.words = res.getStringArray(R.array.test_words);
+        this.words = res.getStringArray(R.array.words);
         setWordLengths();
     }
 

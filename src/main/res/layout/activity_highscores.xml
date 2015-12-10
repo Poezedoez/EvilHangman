@@ -20,6 +20,26 @@
         android:id="@+id/lvScores"
         android:layout_below="@+id/headerEntry"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:id="@+id/tvLastScoreTitle"
+        android:textAlignment="center"
+        android:layout_marginTop="50dp"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lvScores"
+        android:textSize="20sp"
+        android:text="You score from last game:"/>
+
+    <TextView
+        android:id="@+id/tvLastScore"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLastScoreTitle"
+        android:textSize="30sp"/>
 
 </RelativeLayout>

@@ -3,8 +3,6 @@ package com.example.ragger.evilhangman;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,12 +29,8 @@ public class HighscoresActivity extends AppCompatActivity {
     CustomAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
-
-        // Prepare layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscores);
-        this.toolbar = (Toolbar) findViewById(R.id.custom_toolbar);
-        setSupportActionBar(toolbar);
 
         // Get database
         this.database = getSharedPreferences("highscores", MODE_PRIVATE);
@@ -45,9 +38,13 @@ public class HighscoresActivity extends AppCompatActivity {
 
         // Prepare highscores
         this.scores = getHighscores();
-        addNewHighscore();
+        addNewScore();
         arrangeHighscores();
         storeHighscores();
+
+        // Prepare layout
+        this.toolbar = (Toolbar) findViewById(R.id.custom_toolbar);
+        setSupportActionBar(toolbar);
 
         // Use adapter object to instantiate list entries
         this.list = (ListView) findViewById(R.id.lvScores);
@@ -56,10 +53,16 @@ public class HighscoresActivity extends AppCompatActivity {
     }
 
     /* Add a the score from last game to the highscores list */
-    private void addNewHighscore() {
+    private void addNewScore() {
+
+        // Add score from last game
         Intent intent = getIntent();
         int score = intent.getIntExtra("score", 0);
         scores.add(score);
+
+        // Set view to last game's score
+        TextView tvLastScore = (TextView) findViewById(R.id.tvLastScore);
+        tvLastScore.setText(String.valueOf(score));
     }
 
     /* Get the 10 highest saved scores */
