@@ -1,7 +1,7 @@
 # Evil Hangman
 
 ### How to run
-You can download the project by going to the root folder in Github and clicking the ZIP button. Now you have to unzip the project folder to a place of your preference. To open it with an IDE like Android Studio, from the Android Studio menu select File > New > Import Project
+You can download the project by going to the root folder in Github and clicking the ZIP button. Now you have to unzip the project folder to a place of your preference. To open it with Android Studio, from the Android Studio menu select File > New > Import Project
 
 For the complete tutorial on how to import projects, see:
 [Importing Projects to Android Studio](http://developer.android.com/sdk/installing/migrate.html)
