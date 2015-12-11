@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Calling makePermutationSet({'e', '*'}, 3) returns {eee, e**, ee*, ***, etc.}
+ * This class can make a list of permutations
+ * Calling makePermutationSet({'e', '*'}, 3) makes the permutations {eee, e**, ee*, ***, etc.}
  *
  * @author Ragger
  */

@@ -31,9 +31,7 @@ public class SettingsActivity extends AppCompatActivity{
         Intent intent = getIntent();
         this.minWordLength = intent.getIntExtra("minWordLength", -1);
         this.maxWordLength = intent.getIntExtra("maxWordLength", -1);
-
     }
-
 
     private void loadActionBar() {
         this.toolbar = (Toolbar) findViewById(R.id.custom_toolbar);

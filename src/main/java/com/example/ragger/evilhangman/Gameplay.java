@@ -15,6 +15,7 @@ import java.util.List;
  *
  * @author Ragger
  */
+
 public interface Gameplay extends Serializable {
 
     /**

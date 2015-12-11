@@ -30,7 +30,7 @@ public class KeyboardListener implements KeyboardView.OnKeyboardActionListener {
         try {
             host.guess((char) primaryCode);
         } catch (IllegalGuessException e) {
-            // Do nothing; keyboard warrants character range;
+            // Do nothing; keyboard warrants character range
         }
     }
 

@@ -5,7 +5,7 @@ import android.preference.PreferenceFragment;
 
 /**
  * Created by Ragger on 26-11-2015.
- * This class makes preference fragment based on the preference xml file
+ * This class makes preference fragment based on the preferences xml file
  */
 public class SettingsFragment extends PreferenceFragment {
 

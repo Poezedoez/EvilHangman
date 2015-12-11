@@ -96,7 +96,7 @@ public class HighscoresActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        getMenuInflater().inflate(R.menu.menu_highscores, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -104,7 +104,6 @@ public class HighscoresActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.miClear) {
-            // put dialog
             clearHighscores();
             return true;
         }

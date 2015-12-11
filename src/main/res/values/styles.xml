@@ -10,7 +10,7 @@
     <!-- Style for the toolbar (white letters and icons) -->
     <style name="ToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <!-- Style for the popup menu (not supposed to be black) -->
+    <!-- Style for the popup menu -->
     <style name="PopupMenuStyle" parent="AppTheme">
         <item name="android:background">@color/colorPrimaryDark</item>
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>

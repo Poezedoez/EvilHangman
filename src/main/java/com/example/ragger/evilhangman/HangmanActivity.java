@@ -156,7 +156,6 @@ public class HangmanActivity extends AppCompatActivity {
 
     /* Check if the game has finished and handle accordingly */
     private void checkGameState() {
-
         if (game.isWon()) {
 
             // Congratulate user
@@ -169,7 +168,6 @@ public class HangmanActivity extends AppCompatActivity {
             finish();
             startActivity(highscores);
         }
-
         else if (game.isLost()) {
 
             // Hide canvas
@@ -178,7 +176,6 @@ public class HangmanActivity extends AppCompatActivity {
             // Inform user
             showMessage(getString(R.string.game_message_lost), Toast.LENGTH_LONG);
         }
-
     }
 
     @Override
@@ -203,9 +200,8 @@ public class HangmanActivity extends AppCompatActivity {
 
         if (id == R.id.miNewGame) {
             startNewGame();
+            return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -229,7 +225,6 @@ public class HangmanActivity extends AppCompatActivity {
         toast.show();
     }
 
-    /* Let the game react to a guess of the user */
     public void guess(char c) throws IllegalGuessException {
         game.guess(c);
         updateViews();

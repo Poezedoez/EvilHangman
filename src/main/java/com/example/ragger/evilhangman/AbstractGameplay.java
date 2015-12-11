@@ -92,6 +92,7 @@ public abstract class AbstractGameplay implements Gameplay {
         return (27 - guessedCharacters.size()) * wordLength;
     }
 
+    /* Throws exception when the user input is invalid */
     protected void validate(char input) throws IllegalGuessException {
         if (!Character.isLetter(input)) {
             throw new IllegalGuessException(input);

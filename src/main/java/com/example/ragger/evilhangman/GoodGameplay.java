@@ -12,10 +12,11 @@ import java.util.List;
  *
  * @author Ragger
  */
+
 public class GoodGameplay extends AbstractGameplay {
 
     public GoodGameplay(SettingsManager settingsManager, WordManager wordManager) throws NoWordsWithGivenLengthException {
         super(settingsManager);
-        super.word = wordManager.getRandomWordWithLength(wordLength);
+        word = wordManager.getRandomWordWithLength(wordLength);
     }
 }

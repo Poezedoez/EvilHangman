@@ -8,9 +8,11 @@ import android.os.Bundle;
 
 import java.io.Serializable;
 
-/*
+/**
  * The SettingsManager contains all the current user setting preferences.
  * Other classes are able to ask these settings from this class
+ *
+ * @author Ragger
  */
 
 public class SettingsManager implements Serializable {
@@ -27,8 +29,7 @@ public class SettingsManager implements Serializable {
     /* Load the database that contains the user preferences */
     private SharedPreferences loadDatabase(Context context) {
         setDefaultPreferences(context);
-        SharedPreferences database = PreferenceManager.getDefaultSharedPreferences(context);
-        return database;
+        return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     /* Load stored preferences that already contain default values other than the ones given here */

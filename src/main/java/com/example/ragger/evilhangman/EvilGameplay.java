@@ -10,7 +10,7 @@ import java.util.Random;
 
 /**
  * This class is instantiated when the user decides to play the game on evil mode (default)
- * Evil gameplay uses a different way of choosing a word than standard Hangman.
+ * EvilGameplay uses a different way of choosing a word than GoodGameplay.
  *
  * @author Ragger
  */

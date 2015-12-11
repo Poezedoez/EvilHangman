@@ -15,6 +15,7 @@ import java.util.Random;
  *
  * @author Ragger
  */
+
 public class WordManager {
 
     private String[] words;
@@ -73,7 +74,6 @@ public class WordManager {
         if(subset.isEmpty()) {
             throw new NoWordsWithGivenLengthException(wordLength);
         }
-
         return subset;
     }
 
